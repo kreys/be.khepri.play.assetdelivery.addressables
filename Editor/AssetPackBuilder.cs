@@ -143,6 +143,10 @@ namespace Khepri.PlayAssetDelivery.Editor
 			AssetPackBundleConfig config = GetOrCreateConfig();
 			config.packs = packBundles.Select(pack => pack.Name).ToArray();
 			Debug.LogFormat("[{0}.{1}] path={2}", nameof(AssetPackBuilder), nameof(WriteAssetPackConfig), AssetPackBundleConfig.PATH);
+			Debug.Log( "Packs: " );
+			Debug.LogFormat("[{0}.{1}] packs={2}", nameof(AssetPackBuilder), nameof(WriteAssetPackConfig), string.Join("\n", config.packs));
+			Debug.Log( "Bundles: " );
+			Debug.LogFormat("[{0}.{1}] bundles={2}", nameof(AssetPackBuilder), nameof(WriteAssetPackConfig), string.Join("\n", string.Join("\n", packBundles.Select(pack => pack.Bundle))));
 			EditorUtility.SetDirty(config);
 			AssetDatabase.SaveAssets();
 			AssetDatabase.Refresh();
